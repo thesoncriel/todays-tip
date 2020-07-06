@@ -4,6 +4,8 @@
 
 이야기 특성상 약간 DDD 개념도 섞여 있습니다. (100%는 아닙니다~)
 
+이하는 제가 이해한 내용을 바탕으로 작성한 것이니 잘못 이해한 내용 있으면 언제나 댓글 남겨 주세요!
+
 ## 지향 아키텍처
 
 웹프론트엔드의 업무용 아키텍처는 `클린 아키텍처 (Clean Architecture)` 를 지향합니다.
@@ -37,7 +39,7 @@ const ShareComponent: FC = () => {
   const { items } = ctx.useCtxSelectorAll();
   return (
     <section>
-      <ShareList items={items} />
+      <HigherComponent items={items} />
     </section>
   );
 };
@@ -83,15 +85,15 @@ Markup?
 
 View 에 해당하는 UI 컴포넌트가 껍데기라니.. 허허..
 
-왠지 웹프론트엔드 개발직의 자존심을 건드리는 말 같군요.
+왠지 웹프론트엔드 개발직의 자존심을 건드리는 말 같군요. 🤔
 
-하지만 단순하게 접근하기 위해선, 본 주제가 가장 적합합니다.
+왜 이런 망언(?)이 나왔느냐 하면,
 
-왜냐구요?
-
-결국 UI 컴포넌트는 View 에 소속되어 있으며 View 는 API 를 통해 받은 자료를 출력하는 기능이 거의 90% 이상을 담당하기 때문입니다.
+결국, UI 컴포넌트는 View 에 소속되어 있으며 View 는 API 를 통해 받은 자료를 출력하는 기능이 거의 90% 이상을 담당하기 때문입니다.
 
 다만 우린 그 API 결과물을 View 에 그릴 때 좀 더 단순하고 최적화된 형태로 쓸 뿐인 것이죠.
+
+(저희는 현재 [Presentation Model Pattern](https://medium.com/@sandofsky/the-presentation-model-6aeaaab607a0) 을 쓰고 있습니다)
 
 이렇게 원천 정보를 통한 로직을 두고 `Domain Logic` 이라 부릅니다.
 
@@ -117,9 +119,11 @@ View 에 해당하는 UI 컴포넌트가 껍데기라니.. 허허..
 
 결국 위 다이어그램의 `Higher Component` 는 Container 가 전달하는 `Items` 를 원할 뿐이고, 그 Items 는 도메인에서 정의된 것입니다.
 
-그리고 그 `Items` 를 이용할 수 있는 방법(interface)은 당연히 Controller 측에서 가지고 있겠지요!
+그리고 컴포넌트에서 사용되는 items 의 원천인 `ShareItem` 을 이용할 수 있는 방법(interface)은 당연히 Controller 측에서 가지고 있겠지요!
 
 그 것을 View 측에서 정의하진 않겠죠? ^^
+
+View 의 멤버인 UI Component 는 단순히 가져다 쓸 뿐이니까요!
 
 리액트에서 보자면, Props 정의할 때 쓰이는 interface 를 UI Model 에서 받게 되는 것과 같은 이치 입니다.
 
@@ -138,7 +142,7 @@ export const HigherComponent: FC<Props> = ({ items }) => {
   return (
     <ul>
       {items.map((item, idx) => (
-        <LowerItem key={idx} item={item} />
+        <MiddleComponent key={idx} item={item} />
       ))}
     </ul>
   );
@@ -171,7 +175,7 @@ hoxy... `tsx`? ^^;;
 
 프론트엔드 아키텍처에 비유 하자면
 
-1. Server Model 및 Ui Model
+1. Server Model 및 Ui Model 작성
 2. 이들을 이용하는 각종 API & Data Service 작성
 3. 이들을 이용하는 자료 조작기 (Data Manipulator) 작성
 
@@ -187,22 +191,22 @@ hoxy... `tsx`? ^^;;
 
 이유는 간단합니다.
 
-소프트웨어 아키텍어에 있어 도메인이 중심이 되어야 하기 때문 입니다.
+소프트웨어 아키텍처에 있어 도메인이 중심이 되어야 하기 때문 입니다.
 
-그리고 View 는?
+그리고 View 는 젤 마지막에 만들어야 할 껍데기 입니다!
 
-젤 마지막에 만들어야 할 껍데기 입니다!
+즉 개발 순서는 `고수준 → 저수준` 이 되어야 합니다.
 
 ## 마무리
 
 모든 설계나 개발을 인터페이스로 대체하여 개발할 순 없습니다.
 
-그건 오히려 설계 관점에서도 권자하는 바는 아닙니다.
+그건 오히려 설계 관점에서도 권자하는 바가 아닙니다.
 
 다만 우리가 즐겨 쓰던 기술들이, 사실은 어떤 원칙과 패턴을 가지고 있더라..!
 
 ..라는 사실을 한번씩 알고 사용하면
 
-개발 업무 할 때 좀더 재밌어지지 않을까 합니다.
+개발 업무 할 때 좀더 재밌어지지 않을까 합니다. 🙂
 
 -- fin
