@@ -119,7 +119,7 @@ View 에 해당하는 UI 컴포넌트가 껍데기라니.. 허허..
 
 결국 위 다이어그램의 `Higher Component` 는 Container 가 전달하는 `Items` 를 원할 뿐이고, 그 Items 는 도메인에서 정의된 것입니다.
 
-그리고 컴포넌트에서 사용되는 items 의 원천인 `ShareItem` 을 이용할 수 있는 방법(interface)은 당연히 Controller 측에서 가지고 있겠지요!
+그리고 컴포넌트에서 사용되는 items 의 원천인 `ShareItem` 을 이용할 수 있는 방법(interface)은 당연히 View 가 아니라 최소한, Controller 측에서 가지고 있을 겁니다!
 
 그 것을 View 측에서 정의하진 않겠죠? ^^
 
