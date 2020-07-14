@@ -159,13 +159,15 @@ const wonCharger = {
 // costMaker 와 wonCharger 가 원래 만들어졌던 장소와 시기가 달랐던 까닭에
 // 사용법은 비슷했으나, 서로 다르게 운용되고 있었습니다.
 const gold = new Gold();
-const country: 'us' | 'kor' = customer.country;
+const country: "us" | "kor" = customer.country;
 
 const cost =
-  country === 'us' ? costMaker.makeDalar(gold) : wonCharger.toKoreanWon(gold);
+  country === "us" ? costMaker.makeDalar(gold) : wonCharger.toKoreanWon(gold);
 
 console.log(cost);
 ```
+
+아래는 위 코드를 기반으로 공용 인터페이스를 적용한 예시 입니다.
 
 ```ts
 // 공용 인터페이스 선언
@@ -188,7 +190,7 @@ const goldCostForKor: GoldCostCalculator = {
 
 // 공통 인터페이스를 바라보게 되었으므로 팩토리를 사용할 수 있습니다.
 function getGoldCostCalculator(country: string): GoldCostCalculator {
-  if (country === 'us') {
+  if (country === "us") {
     return goldCostForUS;
   }
   return goldCostForKor;
