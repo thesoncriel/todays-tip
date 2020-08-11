@@ -10,7 +10,7 @@
 
 ## 인터페이스 천국
 
-![출처: https://m.gettyimagesbank.com/view/untrained-electrocuted-man-plugging-cable-suffering-electrical-accident/514065484](https://imagescdn.gettyimagesbank.com/500/16/026/845/0/514065484.jpg)
+![출처: https://m.gettyimagesbank.com/view/untrained-electrocuted-man-plugging-cable-suffering-electrical-accident/514065484](images/story-007/comic_man.jpg)
 
 현대 실생활에 USB(Universal Serial Bus)는 빼놓을 수 없습니다.
 
@@ -20,7 +20,7 @@
 
 또 다른 얘를 들어볼까요?
 
-![출처: https://www.howtogeek.com/337896/whats-the-difference-between-a-power-strip-and-a-surge-protector/](https://www.howtogeek.com/wp-content/uploads/2017/12/ximg_5a455dc788698.jpg.pagespeed.gp+jp+jw+pj+ws+js+rj+rp+rw+ri+cp+md.ic.M9eIbRClJn.jpg)
+![출처: https://www.howtogeek.com/337896/whats-the-difference-between-a-power-strip-and-a-surge-protector/](images/story-007/power_codes.jpg)
 
 우리가 늘 쓰는 220V 교류형 전기 콘센트를 찾아보세요.
 
@@ -151,7 +151,7 @@ User Interface (UI) 는 컴퓨터와 사용자간의 소통을 위한 수단입�
 
 UI 는 즉 `소통을 위한 도구`인 것입니다.
 
-![출처: http://www.htmldrive.net/items/show/784/nice-modal-dialog-box-on-form-submit-jquery-ui](https://lh3.googleusercontent.com/proxy/i55t_64WrYgiHqinUgoJguTWo8EoRlYufpCD95J6Ccl_IL4DkI-pKLCqPE2RxCZ7UGk5QrMebmlRdl6915F4dSy_Bm3YKh7WHXh1z88imw)
+![출처: http://www.htmldrive.net/items/show/784/nice-modal-dialog-box-on-form-submit-jquery-ui](images/story-007/ui_sample.jpg)
 
 혹시 UI라 하면 위와 같은 이쁘장한(?) 것만을 떠올리셨나요?
 
@@ -161,7 +161,7 @@ UI 는 즉 `소통을 위한 도구`인 것입니다.
 
 그럼 아래는 어떠실까요?
 
-![출처: https://guidebookgallery.org/screenshots/commandprompt](https://guidebookgallery.org/pics/gui/system/utilities/commandprompt/win98.png)
+![출처: https://guidebookgallery.org/screenshots/commandprompt](images/story-007/win98.png)
 
 Command Line Interface 라고 불리는 CLI 도 인터페이스 입니다.
 
@@ -169,7 +169,7 @@ Command Line Interface 라고 불리는 CLI 도 인터페이스 입니다.
 
 허헐... 나의 UI 는 그렇지 않다구요?
 
-![출처: http://egloos.zum.com/gomdol1012/v/5149278](https://lh3.googleusercontent.com/proxy/XWvJynZL7m-hKkahxAReNT-U3noJ7nlkTp-X8DGZKlx7HqgPAZ5n4FvxnHNyABJ0L8vo7rDV8Z3oPXRUSGCayHyp3Fc9X5BxiUQKSFuc9WcUJWs_zEtj_zl03g)
+![출처: http://egloos.zum.com/gomdol1012/v/5149278](images/story-007/my_aska.jpeg)
 
 새삼스레 이 글을 보는 분들은 다 아실 내용을 굳이 꺼내든 이유는
 
