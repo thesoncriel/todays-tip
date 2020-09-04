@@ -38,7 +38,7 @@
   - 특정 도메인 업무에 종속적이라 유사한 패턴의 다른 업무에 접목시키기 쉽지 않습니다.
   - 리팩토링 시 이것을 바꾸면 예기치 않은 상황(side effect)이 발생될 수 있습니다.
 
-### 게획적 재사용
+### 계획적 재사용
 
 ![출처: https://blog.planview.com/planning-managing-annual-plan-against-incoming-demand/](https://blog.planview.com/wp-content/uploads/2015/04/rethink-planning.jpg)
 
