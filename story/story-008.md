@@ -115,9 +115,11 @@
 
 어쨌건 우린 서버에서 준 옷을 이용해야 합니다.
 
+~~(아깐 버리람서요)~~
+
 어떻게 이용해야 할까요? 🤔
 
-자! 여기에 마냥 버리기만 이 것을 보완하는 패턴있어 소개드립니다.
+자! 여기에 이 문제를 해결할 패턴이 있어 소개 드립니다.
 
 그것은 바로 표현 모델을 이용한 패턴, [Presentation Model Pattern](https://martinfowler.com/eaaDev/PresentationModel.html) 입니다!
 
@@ -129,7 +131,7 @@
 
 한편 우측 `after` 다이어그램을 보자면, View 는 **UI Model**을, Service 는 **Server Model**을 바라봅니다.
 
-두 모델은 사용자의 자료를 담아 처리한다는 관점에선 동일하나, 그 방법이 다릅니다.
+두 모델은 사용자의 자료를 담아 처리한다는 관점에선 동일하나, 그 이용 방법이 다릅니다.
 
 따라서 둘을 서로 변환하는 변환기(Converter)가 존재하고 이들을 상호 변환 해 줍니다.
 
@@ -139,15 +141,17 @@
 
 - UI 모델은 View 에 최적화 되어있기에 UI Logic 이 최소화 될 수 있습니다.
 - UI Component 가 매우 단순해지므로 `Dumb UI`를 유도하는데 매우 적합합니다.
+- UI 가 단순하기 때문에 View Layer 에서는 테스트 분량을 최소화 할 수 있습니다.
+- 만약 Flux 나 Clean Architecture 를 함께 응용한다면 Backend-API 가 미완성이어도 독립적으로 개발하고 mock-data 를 만들어 prototype 을 운용할 수 있습니다.
 - View 는 서버에서 전달된 데이터의 구조가 어떤지 전혀 몰라도 됩니다. (=관심사 분리)
-- 변환기가 있기 때문에 서비스 변화로 인하여 서버 모델이 어떤식으로 달라지더라도 View Layer 는 전혀 영향을 받지 않습니다.
+- 변환기가 있기 때문에 서비스 변화로 인하여 서버 모델이 달라지더라도 View Layer 는 전혀 영향을 받지 않습니다.
 
 ### 도입시 단점
 
 한편 나쁜점은 다음과 같습니다.
 
 - 각 화면(Feature, Page)별로 필요한 UI 모델을 각기 따로 만들어야 합니다.
-- 사용되는 서버 모델을 UI 모델로 변환하는 변환기 역시 따로 만들어주어야 합니다.
+- 사용되는 서버 모델을 UI 모델로 변환하는 변환기 역시 따로 만들어 주어야 합니다.
 - 기존 서버 모델에 높은 의존성(high dependency)을 가진 화면을 리팩터링 하는 시도는 안하느니만 못합니다. (=그냥 새로 만들어야 한다는 뜻)
 
 ## 유사한 패턴들과 비교
@@ -156,4 +160,58 @@
 
 이들과의 차이점을 비교 해 보겠습니다.
 
-### vs Adapter
+### vs Adapter Pattern
+
+어뎁터 패턴은 사용하려는 객체나 자료를 사용처(Client)에 맞게 감싸서 제공하는 패턴 입니다.
+
+이 때 어뎁터는 내부에 원본 객체(Origin Object) 를 가지며 사용처에 맞게 forwarding 하여 제공 합니다.
+
+따라서 내부 값이 바뀌면 외부 Adapter 도 바뀐 값을 제공하게 되며,
+
+반대로 Adapter 로 바뀐건 내부 원본도 바뀌게 됩니다.
+
+![](images/story-008/pmp_vs_adapter.png)
+
+> 예시: EntityAdapter 안에 ServerModel 을 내포하고 View 에 필요한 필드를 적절히 변환하여 전달하는 구조 입니다.
+
+반면 표현 모델은 내부에 그 어떤 원본이 존재하지 않습니다.
+
+미리 변환되어 View 에 제공되며 두 모델은 서로 아무런 연관이 없습니다.
+
+따라서 두 모델은 상호간의 변화에 대하여 독립적입니다.
+
+![](images/story-008/pmp_by_converter.png)
+
+> 예시: UiModel 은 ServerModel 과 별개이며 둘은 서로 불변(immutable) 입니다. View 는 온전히 UiModel 만 필요로 하며 ServerModel 에 대해선 관심이 없습니다.
+>
+> 이러한 UiModel 은 ServerModel 을 기반으로 변환기를 통하여 생성, 제공됩니다.
+
+### vs MVVM's ViewModel
+
+MVVM 패턴의 ViewModel 은 View 를 위한 Model 입니다.
+
+내부에 원본 객체를 가지고 있으며 이를 View 에 맞게 제공하는 방법은 Adapter 와 동일합니다.
+
+다른점은 내부에 View 에 대한 이벤트 핸들러나 기타 View 를 위한 기능이 제공된다는 점 입니다.
+
+View가 제공된 기능을 사용하면, 내부 원본 모델은 Adapter 처럼 변화하게 될 것입니다.
+
+![](images/story-008/pmp_vs_viewmodel.png)
+
+> 예시: ViewModel은 View에 필요한 자료를 제공하며 동시에 필요한 기능도 제공합니다.
+
+반면 표현 모델은 그저 자료만 제공 할 뿐입니다. 무언가 기능이 필요하다면 그건 표현 모델의 역할이 아닌 Controller 나 Interactor, Use Case, Container Component 등의 몫입니다.
+
+물론 앞서 비교한 Adapter 처럼, 모델들은 독립적이기에 상호간의 변화에 영향을 미치지 않습니다.
+
+![](images/story-008/pmp_by_converter.png)
+
+> UiModel 은 기능(method, handler)은 가지지 않으며 그저 View 가 필요로 하는 자료를 맞춤형으로 제공할 뿐입니다.
+
+## 마치며
+
+지금껏 복잡하고 난해한 UI 로직 때문에 고생 하셨다면 이제 표현 모델 패턴을 써 보세요!
+
+UI 개발의 시련은 이제 안녕~~! ..을 고할 수 있을겁니다.
+
+-- fin
