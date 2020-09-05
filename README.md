@@ -10,3 +10,4 @@
 - [오늘의 개발 이야기 - Clean Architecture & DIP](story/story-005.md)
 - [오늘의 개발 이야기 - Reusability](story/story-006.md)
 - [오늘의 개발 이야기 - interface: 소통의 수단](story/story-007.md)
+- [오늘의 개발 이야기 - Presentation Model Pattern](story/story-008.md)
