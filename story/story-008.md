@@ -58,7 +58,8 @@
 
 > 참고로 Smart UI는 `Anti-Pattern` 중 하나입니다.
 >
-> 관련글 - [Smart UI (Anti-pattern)](http://geekswithblogs.net/gregorymalcolm/archive/2009/07/14/user-interface-patterns.aspx)
+> 관련글 - [Smart UI (Anti-pattern)](https://web.archive.org/web/20200815114506/http://geekswithblogs.net/gregorymalcolm/archive/2009/07/14/user-interface-patterns.aspx)
+
 
 이유는 다음과 같습니다.
 
